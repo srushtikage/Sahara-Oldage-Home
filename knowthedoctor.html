@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Information</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('/static/bg.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            margin: 0;
+            padding: 0;
+        }
+        .back-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color:#4caf50;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+            color: #333;
+        }
+
+        #doctor-info {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: rgba(255, 255, 255, 0.6);
+        }
+
+        p {
+            margin-bottom: 10px;
+            font-size: 16px;
+            color: #555;
+        }
+
+        strong {
+            font-weight: bold;
+        }
+        .logout-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #4caf50;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .logout-button:hover {
+            background-color: #4caf50;
+        }
+    </style>
+</head>
+<body>
+    <br><br><br><br><br>
+    <h1>Doctor Information</h1>
+    <button class="back-button" onclick="goBack()">Back</button>
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+
+    <div id="doctor-info">
+        <p><strong>Doctor ID:</strong> {{ doctor[0] }}</p>
+        <p><strong>Name:</strong> {{ doctor[1] }}</p>
+        <p><strong>Phone Number:</strong> {{ doctor[2] }}</p>
+        <p><strong>City:</strong> {{ doctor[3] }}</p>
+        <p><strong>Address Details:</strong> {{ doctor[4] }}</p>
+        <p><strong>Email:</strong> {{ doctor[5] }}</p>
+        <p><strong>Specialization:</strong> {{ doctor[6]}}</p>
+        <p><strong>Status:</strong> {{ doctor[8] }}</p>
+
+       
+    </div>
+ 
+
+    
+</body>
+</html>

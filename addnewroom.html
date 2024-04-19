@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Add New Room Entries</title>
+<style>
+        
+    body {
+        font-family: Arial, sans-serif;
+        background-image: url('/static/bg.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        max-width: 600px;
+        margin: 10px auto;
+        background-color: #fff;
+        border-radius: 10px;
+        padding: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        background-color: rgba(255, 255, 255, 0.6);
+    }
+
+    h1 {
+        text-align: center;
+        color: #4CAF50;
+        margin-top: 0;
+        padding-top: 10px;
+    }
+
+    form {
+        display: grid;
+        gap: 10px;
+    }
+
+    label {
+        font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="date"],
+    input[type="tel"],
+    select,
+    textarea {
+        width: 100%;
+        padding: 6px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+
+    input[type="submit"] {
+        width: auto;
+        padding: 8px 16px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #45a049;
+    }
+</style>
+</head>
+<body>
+
+    <br><br> <br><br> <br><br> <br><br>
+    <div class="container">
+       
+        <h1>Add New Room Details</h1>
+        
+        <form id="newroomForm" action="/insertnewroom" method="post">
+            <label for="room_id">Room Number:</label>
+            <input type="text" id="room_id" name="room_id" required><br>
+            
+            <label for="room_type">Room Type:</label>
+            <input type="text" id="room_type" name="room_type" required><br>
+            
+            <label for="vacancy">Vacancy:</label>
+            <input type="text" id="vacancy" name="vacancy" required><br>
+            
+            <input type="submit" value="Add Entry">
+        </form>
+    </div>
+</body>
+</html>

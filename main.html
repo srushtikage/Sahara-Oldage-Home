@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scrollable Website</title>
+    <style>
+        /* CSS styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            overflow: auto; /* Enable scrolling for content overflow */
+            background-color: #f0f0f0; /* Adding background color to body */
+        }
+
+        nav {
+            background-color: #000; /* Navbar background color */
+            padding: 10px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+            text-align: right; /* Align navigation items to the right */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav h1 {
+            color: white;
+            margin-left: 20px;
+            font-weight: bold;
+            font-family: "Crimson Text", serif; /* Apply font family */
+            text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.4); /* Add text shadow */
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-left: 20px; /* Adjust margin to create space between navigation items */
+        }
+
+        nav ul li:first-child {
+            margin-left: 0; /* Remove margin from the first navigation item */
+        }
+
+        nav ul li a {
+            color: white; /* White text color */
+            text-decoration: none;
+            padding: 8px 16px; /* Add padding to improve clickability */
+            border-radius: 4px; /* Add rounded corners */
+            transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+            font-weight: bold; /* Make text bold */
+        }
+
+        nav ul li a:hover {
+            background-color: #0ca588; /* Darker green on hover */
+        }
+
+        /* Remaining CSS styles */
+        .section {
+            padding: 50px 20px;
+            text-align: left;
+            min-height: 100vh; /* Occupy at least the entire viewport height */
+            overflow: auto; /* Enable scrolling for content overflow */
+        }
+
+        .section.home {
+            background-color: #fff; /* White background */
+            color: #000;
+            background-image: url('/static/sahara.png');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .section.about-us {
+            background-color: #20c997; /* Blue background color */
+            color: #ffffff; /* White text color */
+            padding: 50px; /* Add some padding for better readability */
+            text-align: left; /* Align text to the left */
+            font-family: "Crimson Text", serif; /* Apply font family */
+            text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.4); /* Add text shadow */
+        }
+
+        .section.about-us h2 {
+            color: #ffffff; /* White color for heading */
+            font-size: 55px; /* Increase heading font size */
+            margin-bottom: 30px; /* Add some space below the heading */
+            margin-left: 55px;
+        }
+        .section.about-us p {
+    font-size: 23px; /* Adjust the font size as needed */
+}
+
+.section.about-us .about-us-image {
+    width: 40%; /* Adjust the width of the image as needed */
+    max-width: 400px; /* Adjust the maximum width of the image as needed */
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8); /* Add dark shadow */
+}
+        .about-us-image {
+            width: 100%;
+            max-width: 600px; /* Adjust max-width as needed */
+            display: block;
+            margin: 0 auto; /* Center the image */
+            margin-bottom: 20px; /* Add some space below the image */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Add shadow */
+        }
+
+        .section.dashboard {
+            background-color: #20c997; /* Dark green background */
+            color: #ffffff; /* White text color */
+            font-family: "Crimson Text", serif; /* Apply font family */
+            text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.4); /* Add text shadow */
+        }
+
+        .section.dashboard h1 {
+            color: #ffffff; /* White color for heading */
+            font-size: 55px; /* Increase heading font size */
+            margin-bottom: 30px; /* Add some space below the heading */
+            margin-left: 55px;
+        }
+        /* Add styles for the contact section */
+        .section.contact {
+            background-color: #1a1717;
+            color: #ffffff; /* White text color */
+            font-family: "Crimson Text", serif; /* Apply font family */
+            text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.4); /* Add text shadow */
+        }
+
+        .section.contact h1 {
+            color: #ffffff; /* White color for heading */
+            font-size: 55px; /* Increase heading font size */
+            margin-bottom: 30px; /* Add some space below the heading */
+            margin-left: 55px;
+        }
+
+        .contact-image {
+            display: block;
+            max-width: 100%;
+            margin-bottom: 50px;
+        }
+
+        .section.contact p {
+    font-size: 23px; /* Adjust the font size as needed */
+}
+
+
+        /* Adjust margin of container */
+        .section.contact .container {
+            margin: 0 20px; /* Adjust this value as needed */
+        }
+
+        /*=============== GOOGLE FONTS ===============*/
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap");
+
+/*=============== VARIABLES CSS ===============*/
+:root {
+   
+    /*========== Colors ==========*/
+    /*Color mode HSL(hue, saturation, lightness)*/
+    --first-color: hsl(157, 81%, 35%);
+    --title-color: hsl(0, 0%, 15%);
+    --text-color: hsl(0, 0%, 35%);
+    --body-color: hsl(157, 81%, 35%);
+    --container-color: hsl(0, 0%, 100%);
+  
+    /*========== Font and typography ==========*/
+    /*.5rem = 8px | 1rem = 16px ...*/
+    --body-font: "Poppins", sans-serif;
+    --h2-font-size: 1.25rem;
+    --small-font-size: .813rem;
+  }
+  h1.card__description {
+    font-size:  2.5rem; ;
+    color: hsl(0, 0%, 35%);
+    margin-bottom: .25rem;
+  }
+/*========== Responsive typography ==========*/
+@media screen and (min-width: 1120px) {
+  :root {
+    --h2-font-size: 1.5rem;
+    --small-font-size: .875rem;
+  }
+}
+
+/*=============== BASE ===============*/
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: var(--body-font);
+  background-color: var(--body-color);
+  color: var(--text-color);
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/*=============== CARD ===============*/
+.container {
+    display: grid;
+    place-items: center;
+    margin-inline: 1rem;
+    padding-block: 2rem; /* Adjust this value to reduce the space between rows */
+  }
+  
+  .card__container {
+    display: grid;
+    row-gap: 0.5rem;
+    margin-top: -1rem; /* Adjust this value to reduce the space between the first and second line */
+  }
+  
+
+.card__article {
+  position: relative;
+  overflow: hidden;
+}
+
+.card__img {
+  width: 328px;
+  border-radius: 1.5rem;
+}
+
+.card__data {
+  width: 280px;
+  background-color: var(--container-color);
+  padding: 1.5rem 2rem;
+  box-shadow: 0 8px 24px hsla(0, 0%, 0%, .15);
+  border-radius: 1rem;
+  position: absolute;
+  bottom: -9rem;
+  left: 0;
+  right: 0;
+  margin-inline: auto;
+  opacity: 0;
+  transition: opacity 1s 1s;
+}
+
+.card__description {
+  display: block;
+  font-size: 1.2rem;
+  margin-bottom: .25rem;
+  color: hsl(0, 0%, 35%);
+
+}
+
+.card__title {
+  font-size: var(--h2-font-size);
+  font-weight: 500;
+  color: var(--title-color);
+  margin-bottom: .75rem;
+}
+
+.card__button {
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--first-color);
+}
+
+.card__button:hover {
+  text-decoration: underline;
+}
+
+/* Naming animations in hover */
+.card__article:hover .card__data {
+  animation: show-data 1s forwards;
+  opacity: 1;
+  transition: opacity .3s;
+}
+
+.card__article:hover {
+  animation: remove-overflow 2s forwards;
+}
+
+.card__article:not(:hover) {
+  animation: show-overflow 2s forwards;
+}
+
+.card__article:not(:hover) .card__data {
+  animation: remove-data 1s forwards;
+}
+
+/* Card animation */
+@keyframes show-data {
+  50% {
+    transform: translateY(-10rem);
+  }
+  100% {
+    transform: translateY(-7rem);
+  }
+}
+
+@keyframes remove-overflow {
+  to {
+    overflow: initial;
+  }
+}
+
+@keyframes remove-data {
+  0% {
+    transform: translateY(-7rem);
+  }
+  50% {
+    transform: translateY(-10rem);
+  }
+  100% {
+    transform: translateY(.5rem);
+  }
+}
+
+@keyframes show-overflow {
+  0% {
+    overflow: initial;
+    pointer-events: none;
+  }
+  50% {
+    overflow: hidden;
+  }
+}
+
+/*=============== BREAKPOINTS ===============*/
+/* For small devices */
+@media screen and (max-width: 340px) {
+  .container {
+    margin-inline: 1rem;
+  }
+
+  .card__data {
+    width: 250px;
+    padding: 1rem;
+  }
+}
+
+/* For medium devices */
+@media screen and (min-width: 768px) {
+  .card__container {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 1.5rem;
+  }
+}
+
+/* For large devices */
+@media screen and (min-width: 1120px) {
+  .container {
+    height: 100vh;
+  }
+
+  .card__container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .card__img {
+    width: 348px;
+  }
+  .card__data {
+    width: 316px;
+    padding-inline: 2.5rem;
+  }
+}
+        /* Flexbox for About Us and Contact Us sections */
+        .section.about-us .flex-container,
+        .section.contact .flex-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .section.about-us .about-us-image,
+        .section.contact .contact-image {
+            width: 50%;
+            max-width: 600px;
+            display: block;
+            margin: 0 auto;
+            margin-bottom: 20px;
+        }
+
+        .section.about-us .about-us-text,
+        .section.contact .contact-info {
+            width: 50%;
+            padding: 0 20px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+      <h1>SAHARA</h1>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#dashboard">Dashboard</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+            <li><a href="#logout" onclick="logout()">Log Out</a></li>
+            <script>
+              function logout() {
+                window.location.href = '/';
+                //alert("Logged out successfully!"); 
+              }
+          </script>
+        </ul>
+    </nav>
+    
+    <section id="home" class="section home"></section>
+    
+    <section id="about" class="section about-us">
+        <h2>About Us</h2>
+        <div class="flex-container">
+            <img src="/static/abtus (2).jpeg" alt="About Us Image" class="about-us-image">
+            <div class="about-us-text">
+                <p>
+                    Sahara Old Age Home is dedicated to providing compassionate care and support to the elderly in our community. With a commitment to dignity, respect, and quality of life, we strive to create a nurturing environment where our residents feel valued, safe, and comfortable.
+                    <br><br>
+                    At Sahara, we understand the unique needs and challenges that come with aging. Our team of dedicated professionals is trained to provide personalized care tailored to each individual's needs. From assistance with daily activities to medical support and companionship, we are here to ensure that our residents receive the highest standard of care.
+                    <br><br>
+                    Our facilities are designed to promote independence and well-being while offering a sense of community and belonging. We provide nutritious meals, engaging activities, and comfortable living spaces to enhance the quality of life for our residents.
+                    <br><br>
+                </p>
+            </div>
+        </div>
+    </section>
+    
+    <section id="dashboard" class="section dashboard">
+        <h1>Dashboard</h1>
+        <div class="container">
+              <div class="card__container">
+                 <article class="card__article">
+                    <img src="/static/mem4.webp" alt="image" class="card__img">
+                    <div class="card__data">
+                       <h2 class="card__title">MEMBERS INFORMATION</h2>
+                       <span class="card__description">Detailed information about members present in the Oldage home</span>
+                       <a href="/display" class="card__button">Details</a>
+                    </div>
+                 </article>
+        
+                 <article class="card__article">
+                    <img src="/static/guard.jpg" alt="image" class="card__img">
+                    <div class="card__data">
+                       <h2 class="card__title">GUARDIAN INFORMATION</h2>
+                       <span class="card__description">Detailed information about member's guardians present in the Oldage home</span>
+                       <a href="/displayg" class="card__button">Details</a>
+                    </div>
+                 </article>
+        
+                 <article class="card__article">
+                    <img src="/static/emp.jpg" alt="image" class="card__img">
+                    <div class="card__data">
+                       <h2 class="card__title">EMPLOYEE INFORMATION</h2>
+                       <span class="card__description">Detailed information about employee present in the Oldage home</span>
+                       <a href="/displaye" class="card__button">Details</a>
+                    </div>
+                 </article>
+              </div>
+           
+          
+              <div class="card__container">
+                 <article class="card__article">
+                    <img src="/static/room1.webp" alt="image" class="card__img">
+                    <div class="card__data">
+                       <h2 class="card__title">ROOMS INFORMATION</h2>
+                       <span class="card__description">Detailed information about rooms present in the Oldage home</span>
+                       <a href="/moreroom" class="card__button">Details</a>
+                    </div>
+                 </article>
+        
+                 <article class="card__article">
+                    <img src="/static/doctor.jpg" alt="image" class="card__img">
+                    <div class="card__data">
+                       <h2 class="card__title">DOCTOR INFORMATION</h2>
+                       <span class="card__description">Detailed information about doctors present in the Oldage home</span>
+                       <a href="/display_doc" class="card__button">Details</a>
+                    </div>
+                 </article>
+        
+                 <article class="card__article">
+                    <img src="/static/MR3.jpg" alt="image" class="card__img">
+                    <div class="card__data">
+                       <h2 class="card__title">MEDICAL RECORD INFORMATION</h2>
+                       <span class="card__description">Detailed information about member's medicalrecords present in the Oldage home</span>
+                       <a href="/display_med" class="card__button">Details</a>
+                    </div>
+                 </article>
+              </div>
+           </div>
+           </section>
+
+    <section id="contact" class="section contact">
+        <div class="container">
+            <h1>Contact Us</h1>
+            <div class="flex-container">
+                <img src="/static/contactus.jpg" alt="Contact Image" class="contact-image">
+                <div class="contact-info">
+                    <p>Email: saharaofficial1@gmail.com<br><br>Phone: 020-9123456789<br><br>Address: Maharshi Karve Sansath,<br>Karvenagar, Pune<br>Maharashtra</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

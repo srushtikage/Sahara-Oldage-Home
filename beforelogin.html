@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url('/static/bg.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 50px;
+            padding: 0 20px;
+        }
+
+        .heading {
+            font-size: 50px;
+            font-weight: bold;
+            color: #100d0d;
+            margin-bottom: 20px;
+        }
+
+        .article-box {
+            width: 300px; /* Adjusted box width */
+            height: 250px;
+            background-color: #ffffff;
+            border: 1px solid #ccc;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+            display: flex;
+            flex-direction: column; /* Added to align content vertically */
+            justify-content: space-around; /* Added to evenly distribute content */
+            align-items: center; /* Added to center content horizontally */
+            text-align: center; /* Added to center text */
+            background-color: rgba(255, 255, 255, 0.6);
+        }
+
+        .article-box:hover {
+            transform: translateY(-5px);
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        p {
+            font-size: 18px;
+            color: #666;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #357a38;
+        }
+        .form-image {
+            width: calc(80% - 20px); 
+            max-height: 140px; 
+            margin-bottom: 10px; 
+        }
+        .form-image-male {
+            width: calc(52% - 20px); 
+            max-height: 130px; 
+            margin-bottom: 10px; 
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="heading">LOGIN AS</h1>
+        <div style="display: flex; gap: 50px;"> 
+            <article class="article-box">
+                <h2>Admin</h2>
+                <img class="form-image" src="/static/loginimage.png" alt="Image">
+                <button onclick="location.href='/login'">Admin</button>
+            </article>
+            <article class="article-box">
+                <h2>Guardian</h2>
+                <img class="form-image-male" src="/static/malelogin.webp" alt="Image">
+                <button onclick="location.href='/logingua'">Guardian</button>
+            </article>
+        </div>
+    </div>
+</body>
+</html>

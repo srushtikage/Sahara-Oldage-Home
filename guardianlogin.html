@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Page</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            background-image: url('/static/bg.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        .form-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 30%;
+            padding: 20px;
+            background-color: #f9f9f9; /* Light gray background */
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adds a shadow to the form container */
+            background-color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Additional styles for inputs and buttons for better appearance */
+        input[type=text], input[type=password] {
+            width: calc(100% - 20px);
+            height: 40px;
+            padding: 10px;
+            margin: 10px 0;
+            display: block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        input[type=submit] {
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 0;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        input[type=submit]:hover {
+            background-color: #45a049;
+        }
+        .form-image {
+            width: calc(52% - 30px); /* Set the width of the image to match the input field */
+            max-height: 130px; /* Set the maximum height of the image */
+            margin-bottom: 10px; /* Add some space between the image and the input field */
+        }
+    </style>
+</head>
+<body>
+
+<!-- In login.html -->
+<div class="form-container">
+    <form action="/mainpage" method="POST">
+        <img class="form-image" src="/static/malelogin.webp" alt="Image">
+        <h2>GUARDIAN ID:</h2>
+        <input type="text" name='username'>
+        <h2>PASSWORD:</h2>
+        <input type="password" name='password'>
+        <br><br>
+        <input type="submit" value="Login">
+    </form>
+</div>
+
+</body>
+</html>

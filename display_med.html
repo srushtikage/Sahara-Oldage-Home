@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display Medical Record Entries</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff; /* white */
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 100%; /* Set container to full width */
+            margin: 20px auto;
+            background-color: #fff; /* white */
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            position: relative; /* Position container relative for absolute positioning */
+        }
+        h1 {
+            text-align: center;
+            color: #0651AB; /* green */
+        }
+        table {
+            width: calc(100% - 60px); /* Adjusted width for the table */
+            margin: 20px auto; /* Center the table on the screen */
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #4CAF50; /* green */
+            color: #fff; /* white */
+        }
+        .back-button {
+            position: absolute;
+            top: 107px;
+            right: 50px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .back-button:hover {
+            background-color: #45a049;
+        }
+        .back {
+            position: absolute;
+            top: 20px; /* Adjust the top position */
+            right: 50px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            z-index: 1; /* Ensure the back button is above other elements */
+        }
+        
+        .back:hover {
+            background-color: #45a049;
+        }
+        .sort-select {
+            font-size: 15px;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .search-select {
+            padding: 8px;
+            border: 1px solid #ccc; /* Remove the outer box border */
+            border-radius: 5px;
+            width: auto; /* Set width to auto */
+            display: flex; /* Use flexbox for layout */
+        }
+        .search-select select {
+            flex: 1; /* Take remaining space */
+            margin-right: 5px; /* Add a small margin between dropdown and input field */
+        }
+        .search-input {
+            display: flex; /* Use flexbox for layout */
+            align-items: center; /* Center items vertically */
+        }
+        .search-input input {
+            flex: 1; /* Take remaining space */
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-right: 5px;
+        }
+        .search-input button {
+            padding: 8px 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .sort-select-container,
+        .search-select-container {
+            display: inline-flex;
+            align-items: center;
+            margin-left: 10px; /* Adjust margin to create space between sorting and search dropdowns */
+            margin-right: auto; /* Align to the left */
+        }
+        .search-select-container {
+            margin-left: 10px; /* Adjust margin to create space between sorting and search dropdowns */
+        }
+        .search-select:hover .search-input {
+            display: block;
+        }
+        .edit-button {
+            background-color: #0651AB; /* Set background color to match member entries color */
+            color: white; /* Set font color to white for better visibility */
+            border: none; /* Remove border */
+            border-radius: 8px; /* Keep the border-radius */
+            cursor: pointer;
+            padding: 10px 18px; /* Adjusted padding for slightly smaller button */
+            font-size: 14px; /* Adjusted font size for slightly smaller button */
+        }
+        
+        .edit-button:hover {
+            background-color: #04519c; /* Darken background color slightly on hover */
+        }
+        
+    </style>
+    
+</head>
+<body>
+    <div class="container">
+        <button class="back" onclick="location.href='/main.html'">Back</button>
+
+        <h1>Medical Record Entries</h1>
+
+        <div class="back-button" onclick="location.href='/add_med';">Add New Entry</div>
+
+        <div class="sort-select-container">
+            <form id="sortForm" action="/sort_med" method="get" autocomplete="off">
+                <select class="sort-select" name="sort_option" onchange="this.form.submit()">
+                    <option value="display" {% if sort_option == 'display' %} selected {% endif %}>Display All</option>
+                    <option value="high_bp" {% if sort_option == 'high_bp' %} selected {% endif %}>Sort by High BP</option>
+                    <option value="low_bp" {% if sort_option == 'low_bp' %} selected {% endif %}>Sort by Low BP</option>
+                </select>
+            </form>
+        </div>
+
+        <div class="search-select-container">
+            <form id="searchForm" action="/search_med" method="get" autocomplete="off">
+                <div class="search-select">
+                    <select class="search-select" name="search_option" onchange="this.form.submit()">
+                        <option value="" disabled hidden>Search by...</option>
+                        <option value="M.medicalrecord_id" {% if search_option == 'M.medicalrecord_id' %} selected {% endif %}>Medical Record ID</option>
+                        <option value="M.member_id" {% if search_option == 'M.member_id' %} selected {% endif %}>Member ID</option>
+                        <option value="M.doctor_id" {% if search_option == 'M.doctor_id' %} selected {% endif %}>Doctor ID</option>
+                        <option value="M.high_bp" {% if search_option == 'M.high_bp' %} selected {% endif %}>High BP</option>
+                        <option value="M.low_bp" {% if search_option == 'M.low_bp' %} selected {% endif %}>Low BP</option>
+                        <option value="M.diabetes" {% if search_option == 'M.diabetes' %} selected {% endif %}>Diabetes</option>
+                    </select>
+                    <div class="search-input">
+                        <input type="text" name="search_value" placeholder="Enter search value..." value="{{ search_value }}">
+                        <button type="submit">Search</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <br><br>
+        <table>
+            <thead>
+                <tr>
+                    <th>MEMBER ID</th>
+                    <th>MEDICAL RECORD ID</th>
+                    <th>LAST CHECKUP DATE</th>
+                    <th>DOCTOR ID</th>
+                    <th>HIGH BP</th>
+                    <th>LOW BP</th>
+                    <th>WEIGHT</th>
+                    <th>DIABETES</th>
+                    <th>NOTES</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="entriesTable">
+                <!-- Populate table with user data -->
+                {% for user in users %}
+                <tr>
+                    <td>{{ user[0] }}</td>
+                    <td>{{ user[1] }}</td>
+                    <td>{{ user[2] }}</td>
+                    <td>{{ user[3] }}</td>
+                    <td>{{ user[4] }}</td>
+                    <td>{{ user[5] }}</td>
+                    <td>{{ user[6] }}</td>
+                    <td>{{ user[7] }}</td>
+                    <td>{{ user[8] }}</td>
+                    <td>
+                        <button class="edit-button" onclick="location.href='/edit_medical?medical_id={{ user[0] }}';">Edit</button>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
