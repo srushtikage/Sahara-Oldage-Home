@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sahara</title>
+    <style>
+        body {
+            background-image: url('/static/sahara.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            height: 100vh; /* Set the height of the background to cover the entire viewport */
+            padding: 20px; /* Add some padding */
+            position: relative; /* Make the body a relatively positioned container */
+        }
+
+        /* Add additional styles here */
+        /* You can add additional styles for elements within the body */
+        .content {
+            margin-bottom: 20px; /* Add margin to separate content from button */
+            position: fixed; /* Position the content absolutely */
+            top: 0; /* Align content to the middle vertically */
+            left: 0%; /* Align content to the center horizontally */
+            /*transform: translate(-50%, -50%);  Center the content */
+        }
+
+        .button {
+            background-color: #4CAF50;
+            color: white; /* Change font color to white */
+            font-size: 24px; /* Adjust font size as needed */
+            padding: 15px 30px; /* Adjust padding to make the button larger */
+            position: absolute; /* Position the button absolutely */
+            bottom:35px; /* Distance from the bottom */
+            left: 8%; /* Align button to the center horizontally */
+            margin-left:7px;
+            transform: translateX(-50%); /* Center the button horizontally */
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background-color: #45a049; /* Change background color on hover */
+        }
+    </style>
+</head>
+<body>
+
+    <br>
+    <form action="/beforelogin" method="GET">
+        <button class="button" type="submit">Login</button>
+    </form>
+</body>
+</html>
+
