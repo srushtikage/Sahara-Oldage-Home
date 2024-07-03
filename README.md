@@ -11,7 +11,7 @@ The Old-care management system aims to streamline information storage and access
 ## Table of Contents
 
 - [Installation](#installation)
-- [Objectives](#Objetives)
+- [Objectives](#objetives)
 - [Approach](#Approach)
 - [Tech Stacks](#Tech)
 - [Entity-Relationship Diagram](#ERD)
@@ -60,7 +60,8 @@ The entire project was divided into the following steps which is as follows :
 **Database Connectivity:** MySQL
 ## Entity-Relationship Diagram
 
-![Diagram](https://drive.google.com/file/d/1ba9KwQWcxMZg34YTQbAGL51nv5gAkJBY/view?usp=sharing)
+![ER Diagram](https://github.com/srushtikage/Sahara-Oldage-Home/assets/124689410/a01a515c-44b8-4e0b-b10b-d048b1171810)
+
 ## Key Features
 
 1. **Password Recovery via Email:**
