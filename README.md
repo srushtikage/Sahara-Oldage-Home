@@ -12,11 +12,11 @@ The Old-care management system aims to streamline information storage and access
 
 - [Installation](#installation)
 - [Objectives](#objetives)
-- [Approach](#Approach)
-- [Tech Stacks](#Tech)
-- [Entity-Relationship Diagram](#ERD)
-- [Key Features](#features)
-- [Conclusion](#data-structures-implemented)
+- [Approach](#approach)
+- [Tech Stacks](#tech-stacks)
+- [Entity-Relationship Diagram](#entity-relationship-diagram)
+- [Key Features](#key-features)
+- [Conclusion](#conclusion)
 ## Installation
 
 To install this project, follow these steps:
