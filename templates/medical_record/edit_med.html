@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Medical Records</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('/static/bg.jpg');
+                background-size: cover;
+                background-repeat: no-repeat;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 10px auto;
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: rgba(255, 255, 255, 0.6);
+        }
+        
+        h1 {
+            text-align: center;
+            color:  #4CAF50;
+            margin-top: 0;
+            padding-top: 10px;
+        }
+        
+        form {
+            display: grid;
+            gap: 10px;
+        }
+        
+        label {
+            font-weight: bold;
+        }
+        
+        input[type="text"],
+        input[type="date"],
+        input[type="tel"],
+        input[type="number"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 6px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        /* Disable the spinner controls for number input */
+            input[type="number"]::-webkit-inner-spin-button,
+            input[type="number"]::-webkit-outer-spin-button {
+                -webkit-appearance: none;
+            margin: 0;
+}
+        
+        input[type="submit"] {
+            width: auto;
+            padding: 8px 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Edit Medical Record Entries</h1>
+        <form action="/update_medical" method="post">
+            <input type="hidden" name="medical_id" value="{{ medical[0] }}">
+            
+            <label for="member_id">Member ID (Start with MEM):</label>
+            <input type="text" id="member_id" name="member_id" pattern="[a-zA-Z0-9]+" value="{{ medical[1] }}" required><br>
+            
+            <label for="last_checkup">Last Checkup Date:</label>
+            <input type="date" id="last_checkup" name="last_checkup" value="{{ medical[2] }}" required><br>
+
+            <label for="doctor_id">Doctor ID (Start with DOC):</label>
+            <input type="text" id="doctor_id" name="doctor_id" pattern="[a-zA-Z0-9]+" value="{{ medical[3] }}" required><br>
+            
+            <label for="high_bp">High BP:</label>
+            <input type="number" id="high_bp" name="high_bp" value="{{ medical[4] }}"><br>
+            
+            <label for="low_bp">Low BP:</label>
+            <input type="number" id="low_bp" name="low_bp" value="{{ medical[5] }}"><br>
+            
+            <label for="weight">Weight:</label>
+            <input type="number" id="weight" name="weight" value="{{ medical[6] }}"><br>
+            
+            <label for="diabetes">Diabetes:</label>
+            <select id="diabetes" name="diabetes" required>
+                <option value="Yes" {% if medical[7] == 'Yes' %} selected {% endif %}>Yes</option>
+                <option value="No" {% if medical[7] == 'No' %} selected {% endif %}>No</option>
+            </select><br>
+
+            <label for="medicines">Medicines:</label>
+            <input type="text" id="medicines" name="medicines" value="{{ medical[8] }}"><br>
+
+            <label for="notes">Notes:</label>
+            <input type="text" id="notes" name="notes" value="{{ medical[9] }}"><br>
+            
+            <input type="submit" value="Saves Changes">
+        </form>
+        
+    </div>
+</body>
+</html>
