@@ -17,6 +17,7 @@ The Old-care management system aims to streamline information storage and access
 - [Entity-Relationship Diagram](#entity-relationship-diagram)
 - [Key Features](#key-features)
 - [Conclusion](#conclusion)
+- [Demo Video](#demo-video)
 ## Installation
 
 To install this project, follow these steps:
@@ -85,7 +86,7 @@ Separate portals in order to provide necessary details in quick seconds.
 * Guardians can securely retrieve passwords via registered emails and communicate directly with doctors. 
  
 * The system enhances operational efficiency, promotes proactive care, and ensures seamless information flow for better resident management and family engagement.
-## Demo
+## Demo Video
 
 [Click here to watch the demo video](https://drive.google.com/file/d/1scUZkZfqeqZYpxaG44oIsunwCTxIEjB5/view?usp=sharing)
 
