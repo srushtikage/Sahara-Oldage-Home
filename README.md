@@ -11,7 +11,7 @@ The Old-care management system aims to streamline information storage and access
 ## Table of Contents
 
 - [Installation](#installation)
-- [Objectives](#objetives)
+- [Objectives](#objectives)
 - [Approach](#approach)
 - [Tech Stacks](#tech-stacks)
 - [Entity-Relationship Diagram](#entity-relationship-diagram)
