@@ -141,7 +141,16 @@ def forgot_password():
             
             # Fetch the associated member ID from the database
             cursor.execute("SELECT member_id FROM guardian WHERE guardian_id = %s", (guardian_id,))
-            member_id = cursor.fetchone()[0]
+            member_id = cursor.fetchone()
+
+            if not member_id:
+                # If no member_id found for the guardian_id, set error_message
+                error_message = 'Invalid guardian ID. Please re-enter.'
+                flash(error_message, 'error')
+                return render_template('forget_password.html')
+
+            # Since member_id is fetched successfully, proceed with sending reset email
+            member_id = member_id[0]  # Extract member_id from the tuple returned by fetchone()
             conn.commit()
 
             # Send member ID as the password reset email
@@ -152,11 +161,15 @@ def forgot_password():
             flash('Password reset email sent. Check your email for further instructions.', 'success')
             app.logger.debug('Password reset email sent successfully.')  # Debug statement
 
-            return redirect(url_for('forgot_password.html'))  # Redirect to login page after sending email
+            # Redirect to the same route to prevent form resubmission
+            return redirect(url_for('forgot_password'))
+
         except Exception as e:
             flash('An error occurred while processing your request. Please try again later.', 'error')
             print("An error occurred:", e)
-            return render_template('forgot_password.html')  # Render the form template in case of error
+            traceback.print_exc()  # Print detailed traceback for debugging purposes
+            return render_template('forget_password.html')  # Render the form template in case of error
+
         finally:
             if cursor:
                 cursor.close()
