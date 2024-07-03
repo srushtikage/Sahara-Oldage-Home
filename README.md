@@ -77,7 +77,7 @@ The entire project was divided into the following steps which is as follows :
 4. **Independent portals for administrator and guardians:**
 Separate portals in order to provide necessary details in quick seconds.    
 
-5. **Timely alerts:**: Alerts are sent to the guardians of the residents via email whenever new medical record is added after checkup.
+5. **Timely alerts:** Alerts are sent to the guardians of the residents via email whenever new medical record is added after checkup.
 ## Conclusion
 
 * Our management application integrates Python and MySQL to efficiently manage member records, notify guardians via email after health check-ups, handle employee and room details using triggers, and provide access to medical records.
